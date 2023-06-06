@@ -40,11 +40,12 @@ class ListBarangController extends Controller
     {
         $messages = [
             'required' => ':Attribute harus diisi.',
-            'numeric' => 'Isi :attribute dengan angka'
+            'numeric' => 'Isi :attribute dengan angka',
+            'unique' => ':Attribute sudah digunakan.',
         ];
 
         $validator = Validator::make($request->all(), [
-            'KodeBarang' => 'required',
+            'KodeBarang' => 'required|unique:barangs,kode_barang',
             'NamaBarang' => 'required',
             'DeskripsiBarang' => 'required',
             'HargaBarang' => 'required|numeric',
@@ -96,10 +97,12 @@ class ListBarangController extends Controller
     {
         $messages = [
             'required' => ':Attribute harus diisi.',
-            'numeric' => 'Isi :attribute dengan angka'
+            'numeric' => 'Isi :attribute dengan angka',
+            'unique' => ':Attribute sudah digunakan.',
         ];
 
         $validator = Validator::make($request->all(), [
+            'KodeBarang' => 'required|unique:barangs,kode_barang',
             'NamaBarang' => 'required',
             'DeskripsiBarang' => 'required',
             'HargaBarang' => 'required|numeric',
